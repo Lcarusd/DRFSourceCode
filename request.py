@@ -89,8 +89,7 @@ def _hasattr(obj, name):
 
 def clone_request(request, method):
     """
-    Internal helper method to clone a request, replacing with a different
-    HTTP method.  Used for checking permissions against other methods.
+    克隆请求的内部帮助方法，用其他HTTP方法替换。 用于检查其他方法的权限。
     """
     ret = Request(request=request._request,
                   parsers=request.parsers,
@@ -122,8 +121,7 @@ def clone_request(request, method):
 
 class ForcedAuthentication(object):
     """
-    This authentication class is used if the test client or request factory
-    forcibly authenticated the request.
+    如果测试客户端或请求工厂强制认证请求，则使用此认证类。
     """
 
     def __init__(self, force_user, force_token):
@@ -136,14 +134,12 @@ class ForcedAuthentication(object):
 
 class Request(object):
     """
-    Wrapper allowing to enhance a standard `HttpRequest` instance.
+    包装允许增强标准的`HttpRequest`实例。
 
     Kwargs:
-        - request(HttpRequest). The original request instance.
-        - parsers_classes(list/tuple). The parsers to use for parsing the
-          request content.
-        - authentication_classes(list/tuple). The authentications used to try
-          authenticating the request's user.
+        - request(HttpRequest). 原始请求实例。
+        - parsers_classes(list/tuple). 解析器用于解析请求内容。
+        - authentication_classes(list/tuple). 用于验证请求用户的身份验证
     """
 
     def __init__(self, request, parsers=None, authenticators=None,
@@ -187,7 +183,7 @@ class Request(object):
     @property
     def stream(self):
         """
-        Returns an object that may be used to stream the request content.
+        返回可用于流式传输请求内容的对象。
         """
         if not _hasattr(self, '_stream'):
             self._load_stream()
@@ -196,7 +192,7 @@ class Request(object):
     @property
     def query_params(self):
         """
-        More semantically correct name for request.GET.
+        request.GET的语义上更正确的名称。
         """
         return self._request.GET
 
@@ -209,8 +205,7 @@ class Request(object):
     @property
     def user(self):
         """
-        Returns the user associated with the current request, as authenticated
-        by the authentication classes provided to the request.
+        返回与当前请求关联的用户，并通过提供给请求的认证类进行认证。
         """
         if not hasattr(self, '_user'):
             with wrap_attributeerrors():
