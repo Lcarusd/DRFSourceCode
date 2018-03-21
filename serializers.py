@@ -366,11 +366,10 @@ class Serializer(BaseSerializer):
 
     def get_fields(self):
         """
-        Returns a dictionary of {field_name: field_instance}.
+        返回{field_name：field_instance}的字典。
         """
-        # Every new serializer is created with a clone of the field instances.
-        # This allows users to dynamically modify the fields on a serializer
-        # instance without affecting every other serializer instance.
+        # 每个新的序列化程序都是使用字段实例的克隆创建的。
+        # 这允许用户动态修改序列化器实例上的字段，而不会影响每个其他序列化器实例。
         return copy.deepcopy(self._declared_fields)
 
     def get_validators(self):
