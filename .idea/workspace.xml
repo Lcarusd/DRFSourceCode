@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ca9dbf3-7aea-48e9-bb07-b008b9d325b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/serializers.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/request.py" afterPath="$PROJECT_DIR$/request.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serializers.py" afterPath="$PROJECT_DIR$/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zREADME.md" afterPath="$PROJECT_DIR$/zREADME.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -393,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521443888672</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="update">
+      <created>1521596388269</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1521596388269</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -531,6 +534,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3880">
           <caret line="207" column="38" lean-forward="false" selection-start-line="207" selection-start-column="38" selection-end-line="207" selection-end-column="38" />
+          <folding>
+            <element signature="e#151#190#0" expanded="true" />
+            <marker date="1521532753000" expanded="true" signature="659:749" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -559,6 +566,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1580">
           <caret line="92" column="70" lean-forward="true" selection-start-line="91" selection-start-column="4" selection-end-line="92" selection-end-column="70" />
+          <folding>
+            <element signature="e#151#190#0" expanded="true" />
+            <marker date="1521532753000" expanded="true" signature="659:749" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -662,6 +673,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
           <caret line="207" column="38" lean-forward="false" selection-start-line="207" selection-start-column="38" selection-end-line="207" selection-end-column="38" />
+          <folding>
+            <element signature="e#151#190#0" expanded="true" />
+            <marker date="1521532753000" expanded="true" signature="659:749" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
