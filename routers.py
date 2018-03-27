@@ -59,7 +59,7 @@ def replace_methodname(format_string, methodname):
 
 def flatten(list_of_lists):
     """
-    Takes an iterable of iterables, returns a single iterable containing all items
+    采用可迭代的迭代器，返回包含所有项目的单个迭代器
     """
     return itertools.chain(*list_of_lists)
 
@@ -75,14 +75,13 @@ class BaseRouter(object):
 
     def get_default_base_name(self, viewset):
         """
-        If `base_name` is not specified, attempt to automatically determine
-        it from the viewset.
+        如果未指定`base_name`，则尝试从视图中自动确定它。
         """
         raise NotImplementedError('get_default_base_name must be overridden')
 
     def get_urls(self):
         """
-        Return a list of URL patterns, given the registered viewsets.
+        给定已注册的视图集，返回URL模式列表。
         """
         raise NotImplementedError('get_urls must be overridden')
 
