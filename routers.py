@@ -95,7 +95,7 @@ class BaseRouter(object):
 class SimpleRouter(BaseRouter):
 
     routes = [
-        # List route.
+        # 路由列表
         Route(
             url=r'^{prefix}{trailing_slash}$',
             mapping={
@@ -105,15 +105,14 @@ class SimpleRouter(BaseRouter):
             name='{basename}-list',
             initkwargs={'suffix': 'List'}
         ),
-        # Dynamically generated list routes.
-        # Generated using @list_route decorator
-        # on methods of the viewset.
+        # 动态生成路由列表。
+        # 使用@list_route装饰器在视图的方法上生成。
         DynamicListRoute(
             url=r'^{prefix}/{methodname}{trailing_slash}$',
             name='{basename}-{methodnamehyphen}',
             initkwargs={}
         ),
-        # Detail route.
+        # 详细路由
         Route(
             url=r'^{prefix}/{lookup}{trailing_slash}$',
             mapping={
@@ -125,8 +124,8 @@ class SimpleRouter(BaseRouter):
             name='{basename}-detail',
             initkwargs={'suffix': 'Instance'}
         ),
-        # Dynamically generated detail routes.
-        # Generated using @detail_route decorator on methods of the viewset.
+        # 动态生成详细路由。
+        # 使用@detail_route装饰器在视图的方法上生成。
         DynamicDetailRoute(
             url=r'^{prefix}/{lookup}/{methodname}{trailing_slash}$',
             name='{basename}-{methodnamehyphen}',
