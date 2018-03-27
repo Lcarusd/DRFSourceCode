@@ -1,17 +1,17 @@
 """
-Routers provide a convenient and consistent way of automatically
-determining the URL conf for your API.
+路由器提供了一种方便，一致的自动方式
+确定您的API的URL conf。
 
-They are used by simply instantiating a Router class, and then registering
-all the required ViewSets with that router.
+它们仅用于实例化一个Router类，然后注册
+所有必需的ViewSets与该路由器。
 
-For example, you might have a `urls.py` that looks something like this:
+例如，你可能有一个`urls.py`，看起来像这样：
 
-    router = routers.DefaultRouter()
-    router.register('users', UserViewSet, 'user')
-    router.register('accounts', AccountViewSet, 'account')
+     router = routers.DefaultRouter（）
+     router.register（'users'，UserViewSet，'user'）
+     router.register（'accounts'，AccountViewSet，'account'）
 
-    urlpatterns = router.urls
+     urlpatterns = router.urls
 """
 from __future__ import unicode_literals
 
@@ -31,13 +31,15 @@ from rest_framework.settings import api_settings
 from rest_framework.urlpatterns import format_suffix_patterns
 
 Route = namedtuple('Route', ['url', 'mapping', 'name', 'initkwargs'])
-DynamicDetailRoute = namedtuple('DynamicDetailRoute', ['url', 'name', 'initkwargs'])
-DynamicListRoute = namedtuple('DynamicListRoute', ['url', 'name', 'initkwargs'])
+DynamicDetailRoute = namedtuple(
+    'DynamicDetailRoute', ['url', 'name', 'initkwargs'])
+DynamicListRoute = namedtuple(
+    'DynamicListRoute', ['url', 'name', 'initkwargs'])
 
 
 def escape_curly_brackets(url_path):
     """
-    Double brackets in regex of url_path for escape string formatting
+    用于转义字符串格式的url_path的正则表达式中的双括号
     """
     if ('{' and '}') in url_path:
         url_path = url_path.replace('{', '{{').replace('}', '}}')
@@ -46,8 +48,7 @@ def escape_curly_brackets(url_path):
 
 def replace_methodname(format_string, methodname):
     """
-    Partially format a format_string, swapping out any
-    '{methodname}' or '{methodnamehyphen}' components.
+    部分格式化format_string，交换出任何'{methodname}'或'{methodnamehyphen}'组件。
     """
     methodnamehyphen = methodname.replace('_', '-')
     ret = format_string
@@ -159,7 +160,8 @@ class SimpleRouter(BaseRouter):
         """
         # converting to list as iterables are good for one pass, known host needs to be checked again and again for
         # different functions.
-        known_actions = list(flatten([route.mapping.values() for route in self.routes if isinstance(route, Route)]))
+        known_actions = list(flatten(
+            [route.mapping.values() for route in self.routes if isinstance(route, Route)]))
 
         # Determine any `@detail_route` or `@list_route` decorated methods on the viewset
         detail_routes = []
@@ -191,7 +193,8 @@ class SimpleRouter(BaseRouter):
                 url_name = initkwargs.pop("url_name", None) or url_path
                 ret.append(Route(
                     url=replace_methodname(route.url, url_path),
-                    mapping={httpmethod: methodname for httpmethod in httpmethods},
+                    mapping={
+                        httpmethod: methodname for httpmethod in httpmethods},
                     name=replace_methodname(route.name, url_name),
                     initkwargs=initkwargs,
                 ))
@@ -239,7 +242,8 @@ class SimpleRouter(BaseRouter):
         # Use `pk` as default field, unset set.  Default regex should not
         # consume `.json` style suffixes and should break at '/' boundaries.
         lookup_field = getattr(viewset, 'lookup_field', 'pk')
-        lookup_url_kwarg = getattr(viewset, 'lookup_url_kwarg', None) or lookup_field
+        lookup_url_kwarg = getattr(
+            viewset, 'lookup_url_kwarg', None) or lookup_field
         lookup_value = getattr(viewset, 'lookup_value_regex', '[^/.]+')
         return base_regex.format(
             lookup_prefix=lookup_prefix,
