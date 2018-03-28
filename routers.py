@@ -139,8 +139,7 @@ class SimpleRouter(BaseRouter):
 
     def get_default_base_name(self, viewset):
         """
-        If `base_name` is not specified, attempt to automatically determine
-        it from the viewset.
+        如果未指定`base_name`，则尝试从视图中自动确定它。
         """
         queryset = getattr(viewset, 'queryset', None)
 
@@ -152,9 +151,9 @@ class SimpleRouter(BaseRouter):
 
     def get_routes(self, viewset):
         """
-        Augment `self.routes` with any dynamically generated routes.
+        用任何动态生成的路由增加`self.routes`。
 
-        Returns a list of the Route namedtuple.
+        返回名为Route的路由列表。
         """
         # converting to list as iterables are good for one pass, known host needs to be checked again and again for
         # different functions.
