@@ -1,7 +1,6 @@
 # coding: utf-8
 """
-Pagination serializers determine the structure of the output that should
-be used for paginated responses.
+分页序列化程序确定应该用于分页响应的输出结构。
 """
 from __future__ import unicode_literals
 
@@ -25,7 +24,7 @@ from rest_framework.utils.urls import remove_query_param, replace_query_param
 
 def _positive_int(integer_string, strict=False, cutoff=None):
     """
-    Cast a string to a strictly positive integer.
+    将字符串转换为严格正整数。
     """
     ret = int(integer_string)
     if ret < 0 or (ret == 0 and strict):
@@ -37,7 +36,7 @@ def _positive_int(integer_string, strict=False, cutoff=None):
 
 def _divide_with_ceil(a, b):
     """
-    Returns 'a' divided by 'b', with any remainder rounded up.
+    返回'a'除以'b'，任何余数四舍五入。
     """
     if a % b:
         return (a // b) + 1
@@ -47,7 +46,7 @@ def _divide_with_ceil(a, b):
 
 def _get_count(queryset):
     """
-    Determine an object count, supporting either querysets or regular lists.
+    确定一个对象计数，支持查询集或常规列表。
     """
     try:
         return queryset.count()
@@ -57,20 +56,19 @@ def _get_count(queryset):
 
 def _get_displayed_page_numbers(current, final):
     """
-    This utility function determines a list of page numbers to display.
-    This gives us a nice contextually relevant set of page numbers.
+    该实用程序功能确定要显示的页码列表。
+    这给了我们一个很好的上下文相关的一组页码。
 
     For example:
     current=14, final=16 -> [1, None, 13, 14, 15, 16]
 
-    This implementation gives one page to each side of the cursor,
-    or two pages to the side when the cursor is at the edge, then
-    ensures that any breaks between non-continuous page numbers never
-    remove only a single page.
+    这个实现给游标的每一侧一个页面，
+    或者当光标位于边缘时向两侧提供两页，
+    从而确保非连续页面号之间的任何中断都不会只删除单个页面。
 
-    For an alternative implementation which gives two pages to each side of
-    the cursor, eg. as in GitHub issue list pagination, see:
+    对于给游标的每一侧提供两页的替代实现，例如， 如在GitHub问题列表分页中所示，
 
+    请参阅：
     https://gist.github.com/tomchristie/321140cebb1c4a558b15
     """
     assert current >= 1
@@ -150,10 +148,12 @@ class BasePagination(object):
         raise NotImplementedError('paginate_queryset() must be implemented.')
 
     def get_paginated_response(self, data):  # pragma: no cover
-        raise NotImplementedError('get_paginated_response() must be implemented.')
+        raise NotImplementedError(
+            'get_paginated_response() must be implemented.')
 
     def to_html(self):  # pragma: no cover
-        raise NotImplementedError('to_html() must be implemented to display page controls.')
+        raise NotImplementedError(
+            'to_html() must be implemented to display page controls.')
 
     def get_results(self, data):
         return data['results']
@@ -179,7 +179,8 @@ class PageNumberPagination(BasePagination):
 
     # Client can control the page using this query parameter.
     page_query_param = 'page'
-    page_query_description = _('A page number within the paginated result set.')
+    page_query_description = _(
+        'A page number within the paginated result set.')
 
     # Client can control the page size using this query parameter.
     # Default is 'None'. Set to eg 'page_size' to enable usage.
@@ -309,7 +310,8 @@ class PageNumberPagination(BasePagination):
                     location='query',
                     schema=coreschema.Integer(
                         title='Page size',
-                        description=force_text(self.page_size_query_description)
+                        description=force_text(
+                            self.page_size_query_description)
                     )
                 )
             )
@@ -327,7 +329,8 @@ class LimitOffsetPagination(BasePagination):
     limit_query_param = 'limit'
     limit_query_description = _('Number of results to return per page.')
     offset_query_param = 'offset'
-    offset_query_description = _('The initial index from which to return the results.')
+    offset_query_description = _(
+        'The initial index from which to return the results.')
     max_limit = None
     template = 'rest_framework/pagination/numbers.html'
 
@@ -540,7 +543,8 @@ class CursorPagination(BasePagination):
         # Determine the position of the final item following the page.
         if len(results) > len(self.page):
             has_following_position = True
-            following_position = self._get_position_from_instance(results[-1], self.ordering)
+            following_position = self._get_position_from_instance(
+                results[-1], self.ordering)
         else:
             has_following_position = False
             following_position = None
@@ -594,7 +598,8 @@ class CursorPagination(BasePagination):
         if self.cursor and self.cursor.reverse and self.cursor.offset != 0:
             # If we're reversing direction and we have an offset cursor
             # then we cannot use the first position we find as a marker.
-            compare = self._get_position_from_instance(self.page[-1], self.ordering)
+            compare = self._get_position_from_instance(
+                self.page[-1], self.ordering)
         else:
             compare = self.next_position
         offset = 0
@@ -642,7 +647,8 @@ class CursorPagination(BasePagination):
         if self.cursor and not self.cursor.reverse and self.cursor.offset != 0:
             # If we're reversing direction and we have an offset cursor
             # then we cannot use the first position we find as a marker.
-            compare = self._get_position_from_instance(self.page[0], self.ordering)
+            compare = self._get_position_from_instance(
+                self.page[0], self.ordering)
         else:
             compare = self.previous_position
         offset = 0
@@ -817,7 +823,8 @@ class CursorPagination(BasePagination):
                     location='query',
                     schema=coreschema.Integer(
                         title='Page size',
-                        description=force_text(self.page_size_query_description)
+                        description=force_text(
+                            self.page_size_query_description)
                     )
                 )
             )
