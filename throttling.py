@@ -1,5 +1,5 @@
 """
-Provides various throttling policies.
+提供各种限制策略。
 """
 from __future__ import unicode_literals
 
