@@ -13,7 +13,7 @@ from rest_framework.settings import api_settings
 
 class BaseThrottle(object):
     """
-    Rate throttling of requests.
+    对请求进行速率限制。
     """
 
     def allow_request(self, request, view):
@@ -24,9 +24,8 @@ class BaseThrottle(object):
 
     def get_ident(self, request):
         """
-        Identify the machine making the request by parsing HTTP_X_FORWARDED_FOR
-        if present and number of proxies is > 0. If not use all of
-        HTTP_X_FORWARDED_FOR if it is available, if not use REMOTE_ADDR.
+        通过解析HTTP_X_FORWARDED_FOR（如果存在并且代理的数量大于0）来识别发出请求的计算机。
+        如果不存在，则使用HTTP_X_FORWARDED_FOR，如果不存在则使用REMOTE_ADDR。
         """
         xff = request.META.get('HTTP_X_FORWARDED_FOR')
         remote_addr = request.META.get('REMOTE_ADDR')
@@ -43,8 +42,7 @@ class BaseThrottle(object):
 
     def wait(self):
         """
-        Optionally, return a recommended number of seconds to wait before
-        the next request.
+        或者，返回建议的秒数，在下一个请求之前等待。
         """
         return None
 
