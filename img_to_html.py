@@ -62,7 +62,7 @@ class Img2HTMLConverter(object):
                  font_size=10,
                  char='䦗',
                  background='#000000',
-                 title='img2html by xlzd',
+                 title='img2html by Lcarusd',
                  font_family='monospace',
                  progress_callback=None):
         self.font_size = font_size
