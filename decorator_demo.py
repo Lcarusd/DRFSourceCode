@@ -42,7 +42,7 @@ def logging(level):
 def say(something):
     print("say {}!".format(something))
 
-# say('hello')
+say('带参数的装饰器')
 
 
 # 类装饰器
@@ -60,7 +60,7 @@ class logging(object):
 def say(something):
     print("say {}!".format(something))
 
-# say('bye')
+say('类装饰器')
 
 
 # 带参数的类装饰器
@@ -77,7 +77,7 @@ class logging(object):
 def say(something):
     print("say {}".format(something))
 
-# say('biu~~')
+say('带参数的类装饰器')
 
 
 # 多层装饰器的执行顺序
