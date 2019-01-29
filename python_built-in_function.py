@@ -4,15 +4,6 @@
 值得注意的是：没有“nil”对象; 省略号表示切片中的“...”。
 """
 
-
-# no imports
-
-# Variables with simple values
-# definition of False omitted
-# definition of None omitted
-# definition of True omitted
-# definition of __debug__ omitted
-
 # 内置函数
 
 def abs(*args, **kwargs):
@@ -22,7 +13,7 @@ def abs(*args, **kwargs):
 
 def all(*args, **kwargs):
     """
-    all() 函数用于判断给定的 iterable 中的所有元素是否都为TRUE。如果是，返回True，否则返回 False。
+    all() 函数用于判断给定的 iterable 中的所有元素是否都为True。如果是，返回True，否则返回 False。
     元素除了是 0、空、FALSE 外都算 TRUE。
 
     如果iterable为空，则返回True。
@@ -2369,75 +2360,52 @@ class DeprecationWarning(Warning):
 class dict(object):
     """
     dict() -> new empty dictionary
-    dict(mapping) -> new dictionary initialized from a mapping object's
-        (key, value) pairs
-    dict(iterable) -> new dictionary initialized as if via:
-        d = {}
-        for k, v in iterable:
-            d[k] = v
-    dict(**kwargs) -> new dictionary initialized with the name=value pairs
-        in the keyword argument list.  For example:  dict(one=1, two=2)
+    d = {}
     """
 
     def clear(self):
-        """ D.clear() -> None.  Remove all items from D. """
+        """ 删除字典内所有元素 """
         pass
 
     def copy(self):
-        """ D.copy() -> a shallow copy of D """
+        """ 返回字典的浅表拷贝 """
         pass
 
-    @staticmethod
     def fromkeys(*args, **kwargs):
-        # fromkeys() 函数用于创建一个新字典，以序列 seq 中元素做字典的键，value 为字典所有键对应的初始值。
+        # 用于创建一个新字典，以序列seq中元素做字典的键，value为字典所有键对应的初始值。
         """ Create a new dictionary with keys from iterable and values set to value. """
         pass
 
     def get(self, *args, **kwargs):
-        """ Return the value for key if key is in the dictionary, else default. """
+        """ 若key在字典中，则返回key的值；否则返回None """
         pass
 
     def items(self):
-        """ D.items() -> a set-like object providing a view on D's items """
+        """ 以列表形式返回字典的(key, value)元组视图 """
         pass
 
     def keys(self):
-        """ D.keys() -> a set-like object providing a view on D's keys """
+        """ 以列表形式返回字典的keys视图 """
         pass
 
     def pop(self, k, d=None):
-        """
-        D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
-        If key is not found, d is returned if given, otherwise KeyError is raised
-        """
+        """ 删除给定的key，并返回对应的value；若key不存在，返回d(如果给定)，否则引发KeyError。 """
         pass
 
     def popitem(self):
-        """
-        D.popitem() -> (k, v), remove and return some (key, value) pair as a
-        2-tuple; but raise KeyError if D is empty.
-        """
+        """ 删除dict末尾的键值对,并返回被删除的(k, v)元组 """
         pass
 
     def setdefault(self, *args, **kwargs):
-        """
-        Insert key with a value of default if key is not in the dictionary.
-
-        Return the value for key if key is in the dictionary, else default.
-        """
+        """ 若key不在字典中，则插入值为default的值(默认为None)，返回default；若Key在字典中，则返回key的值。 """
         pass
 
     def update(self, E=None, **F):
-        """
-        D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
-        If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
-        If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
-        In either case, this is followed by: for k in F:  D[k] = F[k]
-        """
+        """ 把字典dict2的键/值对更新到dict里 """
         pass
 
     def values(self):
-        """ D.values() -> an object providing a view on D's values """
+        """ 以列表形式返回字典中的所有值 """
         pass
 
 class enumerate(object):
@@ -2453,57 +2421,6 @@ class enumerate(object):
     enumerate is useful for obtaining an indexed list:
         (0, seq[0]), (1, seq[1]), (2, seq[2]), ...
     """
-
-    def __getattribute__(self, *args, **kwargs):  # real signature unknown
-        """ Return getattr(self, name). """
-        pass
-
-    def __init__(self, iterable, start=0):  # known special case of enumerate.__init__
-        """ Initialize self.  See help(type(self)) for accurate signature. """
-        pass
-
-    def __iter__(self, *args, **kwargs):  # real signature unknown
-        """ Implement iter(self). """
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-    def __next__(self, *args, **kwargs):  # real signature unknown
-        """ Implement next(self). """
-        pass
-
-    def __reduce__(self, *args, **kwargs):  # real signature unknown
-        """ Return state information for pickling. """
-        pass
-
-
-class EOFError(Exception):
-    """ Read beyond end of file. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class FileExistsError(OSError):
-    """ File already exists. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-
-class FileNotFoundError(OSError):
-    """ File not found. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
 
 
 class filter(object):
@@ -2784,18 +2701,6 @@ class float(object):
 
     real = property(lambda self: object(), lambda self, v: None, lambda self: None)  # default
     """the real part of a complex number"""
-
-
-class FloatingPointError(ArithmeticError):
-    """ Floating point operation failed. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
 
 
 class frozenset(object):
@@ -3334,227 +3239,78 @@ class reversed(object):
 
 class set(object):
     """
-    set() -> new empty set object
-    set(iterable) -> new set object
-
-    Build an unordered collection of unique elements.
+    set(), set(iterable), {value}
     """
 
     def add(self, *args, **kwargs):  # real signature unknown
-        """
-        Add an element to a set.
-
-        This has no effect if the element is already present.
-        """
+        """ 将新的value添加到集合，若value存在则无效 """
         pass
 
     def clear(self, *args, **kwargs):  # real signature unknown
-        """ Remove all elements from this set. """
+        """ 删除集合中所有元素 """
         pass
 
     def copy(self, *args, **kwargs):  # real signature unknown
-        """ Return a shallow copy of a set. """
+        """ 集合的浅表拷贝 """
         pass
 
     def difference(self, *args, **kwargs):  # real signature unknown
-        """
-        Return the difference of two or more sets as a new set.
-
-        (i.e. all elements that are in this set but not the others.)
-        """
+        """ 用于计算set中相对给定集合的差集 {1,2,3}.difference({3,4,5})  ->  {1, 2} """
         pass
 
     def difference_update(self, *args, **kwargs):  # real signature unknown
-        """ Remove all elements of another set from this set. """
+        """ 用于移除set中相对给定集合的交集 {1,2,3}.difference_update({3,4,5})  -> {1, 2} """
         pass
 
     def discard(self, *args, **kwargs):  # real signature unknown
-        """
-        Remove an element from a set if it is a member.
-
-        If the element is not a member, do nothing.
-        """
+        """ 删除集合中指定的元素 """
         pass
 
     def intersection(self, *args, **kwargs):  # real signature unknown
-        """
-        Return the intersection of two sets as a new set.
-
-        (i.e. all elements that are in both sets.)
-        """
+        """ 返回与给定集合的交集"""
         pass
 
     def intersection_update(self, *args, **kwargs):  # real signature unknown
-        """ Update a set with the intersection of itself and another. """
+        """ 使用给定iterable与集合的交集重构集合 """
         pass
 
     def isdisjoint(self, *args, **kwargs):  # real signature unknown
-        """ Return True if two sets have a null intersection. """
+        """ 判断给定集合与集合是否为空交集 """
         pass
 
     def issubset(self, *args, **kwargs):  # real signature unknown
-        """ Report whether another set contains this set. """
+        """ 判断给定集合是否为集合的子集 """
         pass
 
     def issuperset(self, *args, **kwargs):  # real signature unknown
-        """ Report whether this set contains another set. """
+        """ 判断给定集合是否为集合的父集 """
         pass
 
     def pop(self, *args, **kwargs):  # real signature unknown
-        """
-        Remove and return an arbitrary set element.
-        Raises KeyError if the set is empty.
-        """
+        """ 移除集合中的一个元素 """
         pass
 
     def remove(self, *args, **kwargs):  # real signature unknown
-        """
-        Remove an element from a set; it must be a member.
-
-        If the element is not a member, raise a KeyError.
-        """
+        """ 删除集合中给定的元素 """
         pass
 
     def symmetric_difference(self, *args, **kwargs):  # real signature unknown
         """
-        Return the symmetric difference of two sets as a new set.
-
-        (i.e. all elements that are in exactly one of the sets.)
+        返回两个集合中不重复的元素构成的新集合
         """
         pass
 
-    def symmetric_difference_update(self, *args, **kwargs):  # real signature unknown
-        """ Update a set with the symmetric difference of itself and another. """
+    def symmetric_difference_update(self, *args, **kwargs):
+        """ 移除集合中与给定集合相同的元素，并将与给定集合不重复的元素插入集合 """
         pass
 
     def union(self, *args, **kwargs):  # real signature unknown
-        """
-        Return the union of sets as a new set.
-
-        (i.e. all elements that are in either set.)
-        """
+        """ 将集合与给定集合的并集作为新集合返回 """
         pass
 
     def update(self, *args, **kwargs):  # real signature unknown
-        """ Update a set with the union of itself and others. """
+        """ 用于合并给定的iterable """
         pass
-
-    def __and__(self, *args, **kwargs):  # real signature unknown
-        """ Return self&value. """
-        pass
-
-    def __contains__(self, y):  # real signature unknown; restored from __doc__
-        """ x.__contains__(y) <==> y in x. """
-        pass
-
-    def __eq__(self, *args, **kwargs):  # real signature unknown
-        """ Return self==value. """
-        pass
-
-    def __getattribute__(self, *args, **kwargs):  # real signature unknown
-        """ Return getattr(self, name). """
-        pass
-
-    def __ge__(self, *args, **kwargs):  # real signature unknown
-        """ Return self>=value. """
-        pass
-
-    def __gt__(self, *args, **kwargs):  # real signature unknown
-        """ Return self>value. """
-        pass
-
-    def __iand__(self, *args, **kwargs):  # real signature unknown
-        """ Return self&=value. """
-        pass
-
-    def __init__(self, seq=()):  # known special case of set.__init__
-        """
-        set() -> new empty set object
-        set(iterable) -> new set object
-
-        Build an unordered collection of unique elements.
-        # (copied from class doc)
-        """
-        pass
-
-    def __ior__(self, *args, **kwargs):  # real signature unknown
-        """ Return self|=value. """
-        pass
-
-    def __isub__(self, *args, **kwargs):  # real signature unknown
-        """ Return self-=value. """
-        pass
-
-    def __iter__(self, *args, **kwargs):  # real signature unknown
-        """ Implement iter(self). """
-        pass
-
-    def __ixor__(self, *args, **kwargs):  # real signature unknown
-        """ Return self^=value. """
-        pass
-
-    def __len__(self, *args, **kwargs):  # real signature unknown
-        """ Return len(self). """
-        pass
-
-    def __le__(self, *args, **kwargs):  # real signature unknown
-        """ Return self<=value. """
-        pass
-
-    def __lt__(self, *args, **kwargs):  # real signature unknown
-        """ Return self<value. """
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-    def __ne__(self, *args, **kwargs):  # real signature unknown
-        """ Return self!=value. """
-        pass
-
-    def __or__(self, *args, **kwargs):  # real signature unknown
-        """ Return self|value. """
-        pass
-
-    def __rand__(self, *args, **kwargs):  # real signature unknown
-        """ Return value&self. """
-        pass
-
-    def __reduce__(self, *args, **kwargs):  # real signature unknown
-        """ Return state information for pickling. """
-        pass
-
-    def __repr__(self, *args, **kwargs):  # real signature unknown
-        """ Return repr(self). """
-        pass
-
-    def __ror__(self, *args, **kwargs):  # real signature unknown
-        """ Return value|self. """
-        pass
-
-    def __rsub__(self, *args, **kwargs):  # real signature unknown
-        """ Return value-self. """
-        pass
-
-    def __rxor__(self, *args, **kwargs):  # real signature unknown
-        """ Return value^self. """
-        pass
-
-    def __sizeof__(self):  # real signature unknown; restored from __doc__
-        """ S.__sizeof__() -> size of S in memory, in bytes """
-        pass
-
-    def __sub__(self, *args, **kwargs):  # real signature unknown
-        """ Return self-value. """
-        pass
-
-    def __xor__(self, *args, **kwargs):  # real signature unknown
-        """ Return self^value. """
-        pass
-
-    __hash__ = None
 
 
 class slice(object):
@@ -3602,28 +3358,6 @@ class staticmethod(object):
     Static methods in Python are similar to those found in Java or C++.
     For a more advanced concept, see the classmethod builtin.
     """
-
-
-class StopAsyncIteration(Exception):
-    """ Signal the end from iterator.__anext__(). """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class StopIteration(Exception):
-    """ Signal the end from iterator.__next__(). """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    value = property(lambda self: object(), lambda self, v: None, lambda self: None)  # default
-    """generator return value"""
 
 
 class str(object):
@@ -3773,12 +3507,7 @@ class str(object):
         pass
 
     def isdigit(self, *args, **kwargs):  # real signature unknown
-        """
-        Return True if the string is a digit string, False otherwise.
-
-        A string is a digit string if all characters in the string are digits and there
-        is at least one character in the string.
-        """
+        """ 判断字符串是否只包含数字 """
         pass
 
     def isidentifier(self, *args, **kwargs):  # real signature unknown
@@ -3791,12 +3520,7 @@ class str(object):
         pass
 
     def islower(self, *args, **kwargs):  # real signature unknown
-        """
-        Return True if the string is a lowercase string, False otherwise.
-
-        A string is lowercase if all cased characters in the string are lowercase and
-        there is at least one cased character in the string.
-        """
+        """ 判断字符串是否由小写字母组成 """
         pass
 
     def isnumeric(self, *args, **kwargs):  # real signature unknown
@@ -4139,50 +3863,10 @@ class super(object):
     """
 
 
-class SyntaxWarning(Warning):
-    """ Base class for warnings about dubious syntax. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class SystemError(Exception):
-    """
-    Internal error in the Python interpreter.
-
-    Please report this to the Python maintainer, along with the traceback,
-    the Python version, and the hardware/OS platform and version.
-    """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class SystemExit(BaseException):
-    """ Request to exit from the interpreter. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    code = property(lambda self: object(), lambda self, v: None, lambda self: None)  # default
-    """exception code"""
-
-
 class tuple(object):
     """
     不可变序列。
     用于构建一个新的元组或将列表转换为元组。
-
     tuple([3, 5, 9])  ->  (3, 5, 9)
     """
 
@@ -4286,69 +3970,6 @@ class type(object):
     __qualname__ = 'type'
     __text_signature__ = None
     __weakrefoffset__ = 368
-
-
-class TypeError(Exception):
-    """ Inappropriate argument type. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class UnboundLocalError(NameError):
-    """ Local name referenced but not bound to a value. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class UnicodeWarning(Warning):
-    """
-    Base class for warnings about Unicode related problems, mostly
-    related to conversion problems.
-    """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class UserWarning(Warning):
-    """ Base class for warnings generated by user code. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
-
-
-class ZeroDivisionError(ArithmeticError):
-    """ Second argument to a division or modulo operation was zero. """
-
-    def __init__(self, *args, **kwargs):  # real signature unknown
-        pass
-
-    @staticmethod  # known case of __new__
-    def __new__(*args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-        pass
 
 
 class zip(object):
